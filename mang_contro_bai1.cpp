@@ -68,6 +68,46 @@ void insert_k(List &L, item x, int k)
 		}
 	}
 }
+void del_first(List &L)
+{
+	L = L->next;
+}
+void del_k(List &L, int k)
+{
+	Node *P = L;
+	int i = 1;
+	if(i<1||i>doDai(L))
+	{
+		cout<<"Vi tri xoa khong hop le!"<<endl;
+	}
+	else
+	{
+		while(P!=NULL && i!= k-1)
+		{
+			P = P->next;
+			i++;
+		}
+		P->next = P->next->next;
+	}
+	
+}
+void demAmDuong(List L)
+{
+	int am = 0;
+	int duong = 0;
+	Node *P = L;
+	while(P!=NULL)
+	{
+		if(P->data<0)
+		am++;
+		else
+		duong++;
+		P = P->next;
+	}
+	cout<<"Co "<<am<<" so AM trong mang"<<endl;
+	cout<<"Co "<<duong<<" so DUONG trong mang"<<endl;
+	
+}
 void nhap(List &L)
 {
 	int i = 0;
@@ -84,17 +124,49 @@ void nhap(List &L)
 }
 void xuat(List L)
 {
+	int i = 1;
 	Node *P = L;
 	while(P!=NULL)
 	{
-		cout<<P->data<<endl;
+		cout<<"L["<<i<<"]= "<<P->data<<endl;
 		P = P->next;
+		i++;
 	}
+}
+void del_x(List &L, int x)
+{
+	Node *P = L;
+	int i = 1;
+	int dem = 0;
+	
+	while(i<=doDai(L))
+	{
+		if(P->data == x)
+		{
+			del_k(L, i);
+			dem++;
+			i--;
+		}
+	i++;
+	P = P->next; 
+	}
+	cout<<"Da xoa "<<dem<<" phan tu bang "<<x<<" ra khoi danh sach!"<<endl;
 }
 int main()
 {
 	List L1;
 	init(L1);
 	nhap(L1);
+	xuat(L1);
+	
+//	int k;
+//	cout<<"Nhap vi tri muon xoa: ";
+//	cin>>k;
+//	del_k(L1, k);
+//	xuat(L1);
+//	demAmDuong(L1);
+//	xuat(L1);
+	
+	del_x(L1, 5);
 	xuat(L1);
 }
