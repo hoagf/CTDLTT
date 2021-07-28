@@ -72,6 +72,21 @@ void insert_k(List &L, SinhVien x, int k)
 		
 	}
 }
+int dem(List &L)
+{
+	int de = 0;
+	Node *P = L;
+	do
+	{
+		if(P->sv.diemTb>=5.0)
+		de++;
+		
+		P = P->next;
+		
+	}while(P != NULL);
+	
+	return de;
+}
 void nhap(List &L)
 {
 	SinhVien x;
@@ -126,5 +141,29 @@ int main()
 	init(L1);
 	nhap(L1);
 	xuat(L1);
+	
+//	int k;
+//	SinhVien x;
+//	cout<<"Them sinh vien vào dau danh sach:"<<endl;
+//	cout<<"Ho ten: ";
+//	fflush(stdin);
+//	getline(cin, x.hoTen);
+//	
+//	cout<<"Lop: ";
+//	fflush(stdin);
+//	getline(cin, x.Lop);
+//	
+//	cout<<"Sbd: ";
+//	fflush(stdin);
+//	getline(cin, x.Sbd);
+//	
+//	cout<<"Diem TB:";
+//	cin>>x.diemTb;
+//	
+//	insert_first(L1, x);
+//	xuat(L1);
+	cout<<"So sv co diem >=5: "<<dem(L1)<<endl;
+	
+	
 	return 1;
 }
